@@ -1056,7 +1056,7 @@ func TestPlaceAutocompleteJsonMarshalLowerCase(t *testing.T) {
 }
 
 func TestFindPlaceFromText(t *testing.T) {
-	expectedQuery := "fields=photos%2Cformatted_address%2Cname%2Copening_hours%2Crating&input=mongolian+grill&inputtype=textquery&key=AIzaNotReallyAnAPIKey&locationbias=circle%3A2000%4047.6918452%2C-122.2226413"
+	expectedQuery := "fields=photos%2Cformatted_address%2Cname%2Copening_hours%2Crating&input=mongolian+grill&inputtype=textquery&key=AIzaNotReallyAnAPIKey&language=en&locationbias=circle%3A2000%4047.6918452%2C-122.2226413"
 	response := `	
 {
 	"candidates" : [
@@ -1093,6 +1093,7 @@ func TestFindPlaceFromText(t *testing.T) {
 	r := &FindPlaceFromTextRequest{
 		Input:              "mongolian grill",
 		InputType:          FindPlaceFromTextInputTypeTextQuery,
+		Language:           "en",
 		Fields:             fields,
 		LocationBias:       FindPlaceFromTextLocationBiasCircular,
 		LocationBiasCenter: &LatLng{47.6918452, -122.2226413},

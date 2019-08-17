@@ -915,6 +915,9 @@ type FindPlaceFromTextRequest struct {
 	// The type of input. Required.
 	InputType FindPlaceFromTextInputType
 
+	// Language specifies the language in which to return results. Optional.
+	Language string
+
 	// Fields allows you to select which parts of the returned details structure
 	// should be filled in.
 	Fields []PlaceSearchFieldMask
@@ -944,6 +947,8 @@ func (r *FindPlaceFromTextRequest) params() url.Values {
 	q.Set("input", r.Input)
 
 	q.Set("inputtype", string(r.InputType))
+
+	q.Set("language", r.Language)
 
 	if len(r.Fields) > 0 {
 		q.Set("fields", strings.Join(placeSearchFieldMasksAsStringArray(r.Fields), ","))
